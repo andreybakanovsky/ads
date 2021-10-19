@@ -27,7 +27,17 @@
    text-decoration: none;
  }
  
+ .btn-success {
+  color: #fff;
+  background-color: #e71818 !important;
+  border-color: #e71818 !important;
+}
 
+.btn-outline-success {
+    color: #fff;
+    background-color: #e71818 !important;
+    border-color: #ff1212 !important;
+}
  // Just a quick ugly style to see if our CSS works
 // h1 {
 // text-decoration: underline;
