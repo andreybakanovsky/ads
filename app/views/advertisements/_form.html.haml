@@ -1,4 +1,9 @@
-= form_for @advertisement do |f|
+= form_with(model: advertisement, local: true) do |f|
+  .mb-3
+    %label.form-label Description
+    = f.text_area :content, placeholder: "New ad ...", class: "form-control", rows: "3"
+    = f.hidden_field :user_id, value: current_user.id
+
   - if @advertisement.errors.any?
     #error_explanation
       %h2= "#{pluralize(@advertisement.errors.count, "error")} prohibited this advertisement from being saved:"
@@ -7,4 +12,4 @@
           %li= message
 
   .actions
-    = f.submit 'Save'
+    = f.submit 'Save', class: "btn btn-primary"

@@ -1,7 +1,9 @@
-%h1 Editing advertisement
+.container
+  .row
+    .col
+      %h3 Edit Ad
+    .col 
+      .float-end
+        = link_to 'Back', advertisements_path, class: 'btn btn-primary'
+= render 'form', advertisement: @advertisement
 
-= render 'form'
-
-= link_to 'Show', @advertisement
-\|
-= link_to 'Back', advertisements_path

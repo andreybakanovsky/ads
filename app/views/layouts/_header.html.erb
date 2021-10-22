@@ -15,6 +15,12 @@
               Logged in as <%= "#{name_for(current_user)}" %>
             </span>
             <li class="nav-item">
+              <%= link_to 'My ads', advertisements_path , class: 'nav-link active' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to '+ad', new_advertisement_path , class: 'nav-link active' %>
+            </li>
+            <li class="nav-item">
               <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link active' %>
             </li>
             <li class="nav-item">
