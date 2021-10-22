@@ -1,19 +1,24 @@
-%h1 Listing advertisements
+.container
+  .row
+    .col
+      %h3 My advertisements
+    .col 
+      .float-end
+        = link_to 'New Ad', new_advertisement_path, class: 'btn btn-success'
 
-%table
-  %thead
-    %tr
-      %th
-      %th
-      %th
+- @advertisements.each do |advertisement|
+  .card
+    .card-body
+      .container
+        .row 
+          .col
+            = advertisement.content
+          .col
+            Place for picture
+      = link_to 'Show', advertisement_path(advertisement), class: "btn btn-info"
+      = link_to 'Edit', edit_advertisement_path(advertisement), class: "btn btn-warning"
+      = link_to 'Delete', advertisement, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
+  %br
 
-  %tbody
-    - @advertisements.each do |advertisement|
-      %tr
-        %td= link_to 'Show', advertisement
-        %td= link_to 'Edit', edit_advertisement_path(advertisement)
-        %td= link_to 'Destroy', advertisement, method: :delete, data: { confirm: 'Are you sure?' }
 
-%br
 
-= link_to 'New Advertisement', new_advertisement_path

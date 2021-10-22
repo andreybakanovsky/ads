@@ -5,7 +5,7 @@ class AdvertisementsController < ApplicationController
 
   # GET /advertisements or /advertisements.json
   def index
-    @advertisements = Advertisement.all
+    @advertisements = Advertisement.all.order(updated_at: :desc)
 
     respond_to do |format|
       format.html
@@ -75,6 +75,7 @@ class AdvertisementsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def advertisement_params
-    params.fetch(:advertisement, {})
+    # params.fetch(:advertisement, {}).permit(:content, :user_id)
+    params.require(:advertisement).permit(:content, :user_id)
   end
 end
