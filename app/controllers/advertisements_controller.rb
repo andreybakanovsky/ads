@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class AdvertisementsController < ApplicationController
+  before_action :authenticate_user!, only: %i[new edit update destroy]
   before_action :find_advertisement, only: %i[show edit update destroy]
 
   # GET /advertisements or /advertisements.json
