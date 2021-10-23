@@ -39,6 +39,9 @@ group :development, :test do
   gem 'rubocop', '~> 1.1', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec', require: false
+
+  # https://www.rubydoc.info/gems/factory_bot/file/GETTING_STARTED.md
+  gem 'factory_bot_rails'
 end
 
 group :development do
@@ -60,6 +63,8 @@ group :test do
   gem 'selenium-webdriver'
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
+  # Test controllers
+  gem 'rails-controller-testing'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
