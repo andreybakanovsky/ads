@@ -29,7 +29,7 @@ AllCops:
     - 'vendor/**/*'
     - '.git/**/*'
 
-Metrics/LineLength:
+Layout/LineLength:
   Max: 120  
 
 Layout/FirstHashElementIndentation:
