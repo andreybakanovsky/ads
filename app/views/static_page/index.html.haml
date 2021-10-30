@@ -1,0 +1,19 @@
+.container-xxl
+  .row
+    .col
+    .col-6
+      %form.d-flex
+        %input.form-control.me-2{"aria-label" => "Search", :placeholder => "3d printer", :type => "search"}/
+        %button.btn.btn-outline-success{:type => "submit"} Search
+    .col
+%br/
+- @ads.each do |ad|
+  .card
+    .card-body
+      .container
+        .row 
+          .col
+            = ad.content
+          .col
+            Place for picture
+  %br/  
