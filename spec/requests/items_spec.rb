@@ -12,16 +12,6 @@ RSpec.describe 'Items', type: :request do
     end
   end
 
-  # describe 'GET /show' do
-  #   let(:advertisement) { create(:advertisement, user: user) }
-
-  #   it 'returns http success' do
-  #     get '/items/1'
-  #     expect(response).to have_http_status(:success)
-  #   end
-  # end
-
-
   describe 'GET /show' do
     let(:advertisement) { create(:advertisement, user: user) }
 
