@@ -1,0 +1,45 @@
+.container-xxl
+  %nav.navbar.navbar-expand-lg.navbar-light
+    .container-fluid
+      %span.navbar-text
+        = link_to 'Yes!', root_path, id: "logo", class: 'navbar-brand'
+        Do you have something? Perhaps this is a particle of happiness for someone.
+      %button.navbar-toggler{"aria-controls" => "navbarSupportedContent", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-bs-target" => "#navbarSupportedContent", "data-bs-toggle" => "collapse", :type => "button"}
+        %span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        %ul.navbar-nav.ms-auto.mb-2.mb-lg-0
+          - if user_signed_in?
+            %span.navbar-text
+              Logged in as #{"#{name_for(current_user)}"}
+            %li.nav-item
+              = link_to 'My ads', advertisements_path , class: 'nav-link active'
+            %li.nav-item
+              = link_to '+ad', new_advertisement_path , class: 'nav-link active'
+            %li.nav-item
+              = link_to 'Logout', destroy_user_session_path, method: :delete, class: 'nav-link active'
+            %li.nav-item
+              = link_to 'Edit profile', edit_user_registration_path, class: 'nav-link active'
+          - else
+            %li.nav-item
+              = link_to 'Login', new_user_session_path, class: 'nav-link active'
+            %li.nav-item
+              = link_to 'Sign up', new_user_registration_path, class: 'nav-link'
+          %li.nav-item.dropdown
+            %a#navbarDropdown.nav-link.dropdown-toggle{"aria-expanded" => "false", "data-bs-toggle" => "dropdown", :href => "#", :role => "button"}
+              Language
+            %ul.dropdown-menu{"aria-labelledby" => "navbarDropdown"}
+              %li
+                %a.dropdown-item{:href => "#"} English
+              %li
+                %a.dropdown-item{:href => "#"} Русский
+
+
+.container-xxl
+  .row
+    .col
+    .col-6
+      %form.d-flex
+        %input.form-control.me-2{"aria-label" => "Search", :placeholder => "3d printer", :type => "search"}/
+        %button.btn.btn-outline-success{:type => "submit"} Search
+    .col
+%br/
