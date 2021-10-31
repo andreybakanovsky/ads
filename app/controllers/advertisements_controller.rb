@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class AdvertisementsController < ApplicationController
-  before_action :authenticate_user!, only: %i[new edit update destroy]
+  before_action :authenticate_user!
   before_action :find_advertisement, only: %i[show edit update destroy]
 
   # GET /advertisements or /advertisements.json
   def index
-    @advertisements = Advertisement.all.order(updated_at: :desc)
+    @advertisements = Advertisement.where(user: current_user).order(updated_at: :desc)
 
     respond_to do |format|
       format.html
@@ -71,7 +71,16 @@ class AdvertisementsController < ApplicationController
 
   # Use callbacks to share common setup or constraints between actions.
   def find_advertisement
-    @advertisement = Advertisement.find(params[:id])
+    advertisement = Advertisement.find(params[:id])
+    if advertisement.user == current_user
+      @advertisement = advertisement
+    else
+      no_access_error
+    end
+  end
+
+  def no_access_error
+    redirect_to root_path, alert: "You don't have access"
   end
 
   # Only allow a list of trusted parameters through.
