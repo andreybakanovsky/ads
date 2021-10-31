@@ -1,5 +1,13 @@
 %p#notice= notice
 
+.card
+  .card-body
+    .container
+      .row 
+        .col
+          = @advertisement.content
+        .col
+          Place for picture
 
 = link_to 'Edit', edit_advertisement_path(@advertisement)
 \|
