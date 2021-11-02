@@ -6,7 +6,7 @@ class AdvertisementsController < ApplicationController
 
   # GET /advertisements or /advertisements.json
   def index
-    @advertisements = Advertisement.where(user: current_user).order(updated_at: :desc)
+    @advertisements = Advertisement.where(user: current_user).order(updated_at: :desc).with_attached_images
 
     respond_to do |format|
       format.html
@@ -33,7 +33,7 @@ class AdvertisementsController < ApplicationController
   # POST /advertisements or /advertisements.json
   def create
     @advertisement = Advertisement.new(advertisement_params)
-
+    # @advertisement.images.attach(params[:advertisement][:images])
     respond_to do |format|
       if @advertisement.save
         format.html { redirect_to @advertisement, notice: 'Ad was successfully created.' }
@@ -67,6 +67,12 @@ class AdvertisementsController < ApplicationController
     end
   end
 
+  def delete_image_attachment
+    @image = ActiveStorage::Attachment.find(params[:id])
+    @image.purge
+    redirect_back(fallback_location: root_path)
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -86,6 +92,6 @@ class AdvertisementsController < ApplicationController
   # Only allow a list of trusted parameters through.
   def advertisement_params
     # params.fetch(:advertisement, {}).permit(:content, :user_id)
-    params.require(:advertisement).permit(:content, :user_id)
+    params.require(:advertisement).permit(:content, :user_id, images: [])
   end
 end

@@ -3,7 +3,11 @@ Rails.application.routes.draw do
   get 'items/:id', controller: 'items', action: 'show'
   # root 'static_page#index'
   devise_for :users, controllers: { registrations: "users/registrations"}
-  resources :advertisements
+  resources :advertisements do
+    member do
+      delete :delete_image_attachment
+    end
+  end
   # resources :items, only: [:]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   # 3 parts!
