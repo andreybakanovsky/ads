@@ -14,11 +14,10 @@
           .col
             = advertisement.content
           .col
-            Place for picture
+            Images
       = link_to 'Show', advertisement_path(advertisement), class: "btn btn-info"
       = link_to 'Edit', edit_advertisement_path(advertisement), class: "btn btn-warning"
       = link_to 'Delete', advertisement, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger"
   %br
-
 
 

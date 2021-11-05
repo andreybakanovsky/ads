@@ -1,10 +1,61 @@
+%h5 Our offers!
+.card
+  .card-body
+    .container
+      .row
+        #carouselExampleDark.carousel.carousel-dark.slide{"data-bs-ride" => "carousel"}
+          .carousel-inner
+            - @items.each_with_index do |item, index|
+              %div{:class => "carousel-item #{index == 0 ? " active" : ''}", "data-bs-interval" => "4000"}
+                .row
+                  .col
+                    .card{:style => "width: 18rem;"}
+                      - i = ads_index_with_attached
+                      = image_tag @items[i].images[0].variant(resize_to_limit: [200, 200])
+                      .card-body
+                        %h5.card-title Name
+                        %p.card-text 
+                          = @items[i].content
+                  .col
+                    .card{:style => "width: 18rem;"}
+                      - i = ads_index_with_attached
+                      = image_tag @items[i].images[0].variant(resize_to_limit: [200, 200])
+                      .card-body
+                        %h5.card-title Name
+                        %p.card-text 
+                          = @items[i].content
+                  .col
+                    .card{:style => "width: 18rem;"}
+                      - i = ads_index_with_attached
+                      = image_tag @items[i].images[0].variant(resize_to_limit: [200, 200])
+                      .card-body
+                        %h5.card-title Name
+                        %p.card-text 
+                          = @items[i].content
+                  .col
+                    .card{:style => "width: 18rem;"}
+                      - i = ads_index_with_attached
+                      = image_tag @items[i].images[0].variant(resize_to_limit: [200, 200])
+                      .card-body
+                        %h5.card-title Name
+                        %p.card-text 
+                          = @items[i].content                                                                              
+            %button.carousel-control-prev{"data-bs-slide" => "prev", "data-bs-target" => "#carouselExampleDark", :type => "button"}
+              %span.carousel-control-prev-icon{"aria-hidden" => "true"}
+              %span.visually-hidden Previous
+            %button.carousel-control-next{"data-bs-slide" => "next", "data-bs-target" => "#carouselExampleDark", :type => "button"}
+              %span.carousel-control-next-icon{"aria-hidden" => "true"}
+              %span.visually-hidden Next
+%br/
 - @items.each do |item|
   .card
     .card-body
       .container
         .row 
           .col
-            = item.content
+            - if item.images.attached?
+              = image_tag item.images[rand(0..(item.images.count-1))].variant(resize_to_limit: [200, 200]) 
           .col
-            Place for picture
+            = item.content
   %br/  
+
