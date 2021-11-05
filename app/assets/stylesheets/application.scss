@@ -15,6 +15,7 @@
  */
 
  @import "bootstrap/scss/bootstrap";
+ @import "items.scss";
 
  #logo {
    text-decoration: none;
@@ -42,3 +43,11 @@
 // h1 {
 // text-decoration: underline;
 //   }
+
+#carouselExampleDark .carousel-control-prev {
+  left: -75px;
+  }
+
+#carouselExampleDark .carousel-control-next {
+  right: -75px;
+  }
